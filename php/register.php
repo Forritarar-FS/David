@@ -11,7 +11,7 @@ if(isset($_POST['btn-signup']))
 	$uname = mysql_real_escape_string($_POST['uname']);
 	$email = mysql_real_escape_string($_POST['email']);
 	$upass = md5(mysql_real_escape_string($_POST['pass']));
-	
+
 	if(mysql_query("INSERT INTO users(username,email,password) VALUES('$uname','$email','$upass')"))
 	{
 		?>
@@ -26,7 +26,7 @@ if(isset($_POST['btn-signup']))
 	}
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,4 +59,4 @@ if(isset($_POST['btn-signup']))
 </div>
 </center>
 </body>
-</html>
+</html> -->

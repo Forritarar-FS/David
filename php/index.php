@@ -13,7 +13,7 @@ if(isset($_POST['btn-login']))
 	$upass = mysql_real_escape_string($_POST['pass']);
 	$res=mysql_query("SELECT * FROM users WHERE email='$email'");
 	$row=mysql_fetch_array($res);
-	
+
 	if($row['password']==md5($upass))
 	{
 		$_SESSION['user'] = $row['user_id'];
@@ -25,10 +25,10 @@ if(isset($_POST['btn-login']))
         <script>alert('wrong details');</script>
         <?php
 	}
-	
+
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -57,4 +57,4 @@ if(isset($_POST['btn-login']))
 </div>
 </center>
 </body>
-</html>
+</html> -->
