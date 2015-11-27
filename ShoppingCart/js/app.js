@@ -2,7 +2,7 @@
 
 // App Module: the name AngularStore matches the ng-app attribute in the main <html> tag
 // the route provides parses the URL and injects the appropriate partial page
-var storeApp = angular.module('AngularStore', []).
+var storeApp = angular.module('AngularStore', ['ngRoute']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 
@@ -44,15 +44,15 @@ var storeApp = angular.module('AngularStore', []).
 
       when('/store', {
         templateUrl: 'partials/store.htm',
-        controller: storeController
+        controller: 'storeController'
       }).
       when('/products/:productSku', {
         templateUrl: 'partials/product.htm',
-        controller: storeController
+        controller: 'storeController'
       }).
       when('/cart', {
         templateUrl: 'partials/shoppingCart.htm',
-        controller: storeController
+        controller: 'storeController'
       }).
       otherwise({
         redirectTo: '/store'
@@ -99,3 +99,9 @@ storeApp.factory("DataService", function () {
         cart: myCart
     };
 });
+
+
+
+storeApp.service("CurrencyService",["$http", function ($http) {
+  return $http.get("http://apis.is/currency/lb");
+}]);

@@ -14,13 +14,17 @@ if(isset($_POST['username']))
 
 	if(mysql_query("INSERT INTO users(username,email,password) VALUES('$uname','$email','$upass')"))
 	{
+		header('Location: ../#/store');
 		?>
         <script>alert('successfully registered ');</script>
+
         <?php
 	}
 	else
 	{
+		die('Invalid query: ' . mysql_error());
 		?>
+
         <script>alert('error while registering you...');</script>
         <?php
 	}
