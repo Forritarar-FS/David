@@ -8,9 +8,12 @@ storeApp.controller('aboutController', function($scope) {
     $scope.message = 'Look! I am an about page.';
 });
 
-storeApp.controller('contactController', function($scope) {
+storeApp.controller('contactController', ["$scope",'CurrencyService', function($scope, CurrencyService) {
     $scope.message = 'Contact us! JK. This is just a demo.';
-});
+    CurrencyService.success(function(data){
+      $scope.rate = data.results;
+    });
+}]);
 
 storeApp.controller('loginController', function($scope) {
     $scope.message = 'Login page.';
