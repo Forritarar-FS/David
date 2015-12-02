@@ -3,11 +3,11 @@ session_start();
 
 if(!isset($_SESSION['user']))
 {
-	header("Location: index.php");
+	header("Location: /#/store");
 }
 else if(isset($_SESSION['user'])!="")
 {
-	header("Location: home.php");
+	header("Location: /#/store");
 }
 
 if(isset($_GET['logout']))
