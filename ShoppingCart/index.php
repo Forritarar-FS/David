@@ -1,7 +1,20 @@
-﻿<!doctype html>
+<?php
+session_start();
+include_once 'dbconnect.php';
+
+//print_r($_SESSION);
+if(!isset($_SESSION['user']))
+{
+	header("Location: login.php");
+}
+$res=mysql_query("SELECT * FROM users WHERE user_id=".$_SESSION['user']);
+$userRow=mysql_fetch_array($res);
+?>
+
+<!doctype html>
 <html ng-app="AngularStore">
   <head>
-    <title>Svindlbankinn</title>
+    <title>Shopping Cart with AngularJS</title>
 
     <!-- SCROLLS -->
     <!-- load bootstrap and fontawesome via CDN -->
@@ -17,8 +30,7 @@
 
     <!-- jQuery, Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
-
-
+    
     <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
     <!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript" ></script>-->
@@ -44,10 +56,13 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
-                <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
-                <li><a href="#login"> <u>Login/Signup</u></a></li>
+                <li><a href="./#/about"><i class="fa fa-shield"></i> About</a></li>
+                <li><a href="#contact"><i class="fa fa-money"></i> Currency</a></li>
+                <!--<li><a href="#login"> <u>Login/Signup</u></a></li>-->
                 <li><a href="#index"> Verslun</a></li>
+								<li><a href="#"><?php echo $userRow['username']; ?> </a></li>
+								<li><a href="logout.php?logout"><i class="fa fa-circle"></i> Sign Out</a></li>
+
             </ul>
         </div>
         </nav>
@@ -64,7 +79,7 @@
         <div class="row-fluid">
             <div class="span10 offset1">
                 <h1 class="well" >
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="img/logo.png" height="60" width="60" alt="logo"/>
                     </a>
                     Ávaxtabarinn

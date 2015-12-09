@@ -11,8 +11,17 @@ storeApp.controller('aboutController', function($scope) {
 storeApp.controller('contactController', ["$scope",'CurrencyService', function($scope, CurrencyService) {
     $scope.message = 'Contact us! JK. This is just a demo.';
     CurrencyService.success(function(data){
-      $scope.rate = data.results;
+
+      for (var i = 0; i < data.results.length; i++) {
+        var what1 = ""+data.results[i].value;
+        console.log(what1);
+        var what2 = what1.substring(0, 5);
+        data.results[i].value=what2;
+      }
+        $scope.rate = data.results;
+
     });
+
 }]);
 
 storeApp.controller('loginController', function($scope) {
